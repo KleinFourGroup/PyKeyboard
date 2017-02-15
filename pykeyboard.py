@@ -89,17 +89,17 @@ def grab_handler():
 # ----------
 
 def send_key(emulated_key, shift = False):
-    shift_mask = 0 # or Xlib.X.ShiftMask
+    shift_mask = 0 # or X.ShiftMask
     if shift:
-        shift_mask = Xlib.X.ShiftMask
+        shift_mask = X.ShiftMask
     window = dpy.get_input_focus()._data["focus"]
-    keysym = Xlib.XK.string_to_keysym(emulated_key)
+    keysym = XK.string_to_keysym(emulated_key)
     keycode = dpy.keysym_to_keycode(keysym)
     event = Xlib.protocol.event.KeyPress(
         time = int(time.time()),
         root = root,
         window = window,
-        same_screen = 0, child = Xlib.X.NONE,
+        same_screen = 0, child = X.NONE,
         root_x = 0, root_y = 0, event_x = 0, event_y = 0,
         state = shift_mask,
         detail = keycode
@@ -109,7 +109,7 @@ def send_key(emulated_key, shift = False):
         time = int(time.time()),
         root = dpy.screen().root,
         window = window,
-        same_screen = 0, child = Xlib.X.NONE,
+        same_screen = 0, child = X.NONE,
         root_x = 0, root_y = 0, event_x = 0, event_y = 0,
         state = shift_mask,
         detail = keycode

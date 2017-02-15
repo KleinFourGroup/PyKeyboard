@@ -244,6 +244,50 @@ z --> ok
 9 --> pp
 """
 
+"""
+a --> meli
+b --> inka
+c --> kapo
+d --> kain
+e --> meme
+f --> liin
+
+g --> liom
+h --> kaka
+i --> meom
+j --> inom
+k --> inin
+l --> kaom
+
+m --> lika
+n --> mepo
+o --> mein
+p --> inme
+q --> omme
+r --> kali
+
+s --> kame
+t --> meka
+u --> lime
+v --> inli
+w --> lili
+x --> inpo
+
+y --> lipo
+z --> omka
+0 --> omli
+1 --> omin
+2 --> omom
+3 --> ompo
+
+4 --> pome
+5 --> poka
+6 --> poli
+7 --> poin
+8 --> poom
+9 --> popo
+"""
+
 
 if __name__ == '__main__':
     main()

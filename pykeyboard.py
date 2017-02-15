@@ -6,8 +6,6 @@ import sys
 import signal 
 import time
 
-import pyxhook
-
 dpy = None
 root = None
 
@@ -48,6 +46,8 @@ def gen_parse():
             buff_parse[x + y] = freq[loc]
             loc = loc + 1
 
+# ----------
+
 def get_code(key):
     keysym = XK.string_to_keysym(key)
     keycode = dpy.keysym_to_keycode(keysym)
@@ -86,6 +86,7 @@ def grab_handler():
             ungrab(ch)
     grabbed = not grabbed
 
+# ----------
 
 def send_key(emulated_key, shift = False):
     shift_mask = 0 # or Xlib.X.ShiftMask
@@ -115,6 +116,8 @@ def send_key(emulated_key, shift = False):
         )
     window.send_event(event, propagate = True)
     print "Sent " + emulated_key + " " + str(shift)
+
+# ----------
 
 def handle_event(event):
     print "Handle: " + get_char(event.detail) + " " + get_type(event.type)
@@ -147,7 +150,7 @@ def OnKeyUp(event):
         if dif > 0.2:
             kill()
 
-
+# ----------
 
 def push(ch):
     global buff
@@ -179,7 +182,9 @@ def process():
     else:
         buff = buff[0]
         return
-    
+
+# ----------
+
 def main():
     global dpy, root
     #start the session
@@ -200,6 +205,12 @@ def main():
         event = dpy.next_event()
         handle_event(event)
         dpy.allow_events(X.AsyncKeyboard, X.CurrentTime)
+
+if __name__ == '__main__':
+    main()
+
+# ----------
+
 """
 a --> ml
 b --> ik
@@ -287,7 +298,3 @@ z --> omka
 8 --> poom
 9 --> popo
 """
-
-
-if __name__ == '__main__':
-    main()
